@@ -11,7 +11,14 @@ require('dotenv').config();
 const app = express();
 
 // Conecta ao Banco
-const options =  { keepAlive: 1, connectTimeoutMS: 30000, reconnectTries: 30, reconnectInterval: 5000, useNewUrlParser: true };
+const options = {
+    keepAlive: 1,
+    connectTimeoutMS: 86400000,
+    socketTimeoutMS: 86400000,
+    reconnectTries: 99,
+    reconnectInterval: 3600000,
+    useNewUrlParser: true
+};
 mongoose.connect(process.env.DB_URL, options, function (err) {
     if (err) throw logger.error(err);
 });
